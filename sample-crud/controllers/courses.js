@@ -9,8 +9,24 @@ router.get('/add',(req,res)=>{
 })
 
 router.post('/add',(req,res)=>{
-    var course = new 
-})
+    var course = new CourseModel()
+    course.courseName = req.body.courseName;
+    course.courseDuration = req.body.courseDuration;
+    course.courseFee = req.body.courseFee;
+    course.courseId = Math.ceil(Math.random()*10000);
+
+    course.save((err,doc)=>{
+        if(!err){
+            res.redirect("/course/list")
+        }
+        else{
+            res.send("Error Occurred");
+        }
+    });
+
+
+
+});
 
 router.get("/list",(req,res)=>{
     CourseModel.find((err,docs)=>{

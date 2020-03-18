@@ -21,12 +21,13 @@ application.engine("hbs",expressHandlerbars({
 
 application.set("view engine","hbs");
 
+
 application.get("/",(req,res)=>{
     //res.send("<h1>Hello</h1>")
     res.render("index",{})
 });
 
-application.use("/courses",CourseController)
+application.use("/course",CourseController)
 
 
 application.listen("3000",()=>{
